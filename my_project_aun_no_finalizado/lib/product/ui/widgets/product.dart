@@ -2,14 +2,14 @@ import 'dart:convert';
 
 class Product {
   int? id;
-  String? tipo;
-  String? origen;
-  String? sabor;
-  String? imagen;
+  String tipo;
+  String origen;
+  String sabor;
+  String imagen;
 
   Product({
     this.id,
-    this.tipo,
+    required this.tipo,
     required this.origen,
     required this.sabor,
     required this.imagen

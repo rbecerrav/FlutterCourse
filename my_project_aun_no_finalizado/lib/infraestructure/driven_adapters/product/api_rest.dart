@@ -9,13 +9,16 @@ class ApiREST{
   Client client = Client();
   Future<List<Product>> getProfiles() async{
     print("voy a consumir el api ${baseUrl}");
-    final response = await client.get("http://run.mocky.io/v3/ac04c20b-9a98-473f-9d92-490b212b2273");
+    //final response = await client.get("http://run.mocky.io/v3/ac04c20b-9a98-473f-9d92-490b212b2273");
+    final response = await client.get("http://3.142.37.77:3000/products");
     print("RESPUESTA DEL API");
     //print(response.body.toString());
     if(response.statusCode == 200){
       return profileFromJson(response.body);
     }else{
-      return [Product(origen: "", sabor: "", imagen: "")];
+      return [Product(origen: "origen",
+          tipo: "tipo",
+          sabor: "sabor", imagen: "imagen")];
     }
   }
 

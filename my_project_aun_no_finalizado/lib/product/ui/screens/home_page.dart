@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Product/ui/widgets/profile_background.dart';
 import 'package:my_project/infraestructure/driven_adapters/product/api_rest.dart';
+import 'package:my_project/product/ui/widgets/product_card.dart';
 
 import '../../../product/ui/widgets/product.dart';
 
@@ -35,31 +36,15 @@ class _HomePageState extends State<HomePage> {
                 return Container(child: Text('X'),); // Display empty container if the list is empty
               else{
                 List<Product> list = future.data as List<Product>;
+                //return ProductCard(new Product(origen: "origen",tipo: "tipo", sabor: "sabor", imagen: "http://i0.wp.com/farallonesdelcitara.bioexploradores.com/wp-content/uploads/2022/10/IMG_3619-2.jpg?resize=790%2C415&ssl=1"));
                 return ListView.builder(
                   padding: const EdgeInsets.all(8),
                     itemCount: list.length,
                     itemBuilder: (context, index){
-                      return Container(
-                        height: 50,
-                          child: Text(list[index].toString(),
-                            style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                          ),
-                          overflow: TextOverflow.ellipsis));
+                    return ProductCard(list[index]);
                     });
               }
             }),
-        /*ListView.builder(
-            padding: const EdgeInsets.all(8),
-            itemCount: entries.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 50,
-                color: Colors.amber[colorCodes[index]],
-                child: Center(child: Text('Entry ${entries[index]}')),
-              );}
-        )*/
       ],
     );
   }
