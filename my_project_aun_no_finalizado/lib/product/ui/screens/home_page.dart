@@ -4,6 +4,7 @@ import 'package:my_project/infraestructure/driven_adapters/product/api_rest.dart
 import 'package:my_project/product/ui/widgets/product_card.dart';
 
 import '../../../product/ui/widgets/product.dart';
+import 'add_product.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -19,6 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
+  var selectedIndex= 0;
+  
   @override
   void initState() {
     super.initState();
@@ -37,16 +40,26 @@ class _HomePageState extends State<HomePage> {
               else{
                 List<Product> list = future.data as List<Product>;
                 //return ProductCard(new Product(origen: "origen",tipo: "tipo", sabor: "sabor", imagen: "http://i0.wp.com/farallonesdelcitara.bioexploradores.com/wp-content/uploads/2022/10/IMG_3619-2.jpg?resize=790%2C415&ssl=1"));
-                return ListView.builder(
+                return ListView.separated(
                   padding: const EdgeInsets.all(8),
                     itemCount: list.length,
                     itemBuilder: (context, index){
                     return ProductCard(list[index]);
-                    });
+                    },
+                    separatorBuilder: (BuildContext context, int index) => const Divider(),
+                    );
               }
             }),
+        Center(
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>AddProduct()));
+              },
+              child: Text('Press me')),
+        )
       ],
     );
   }
+
 
 }

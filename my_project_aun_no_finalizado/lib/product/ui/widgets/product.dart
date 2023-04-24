@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class Product {
+
   int? id;
   String tipo;
   String origen;

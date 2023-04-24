@@ -14,6 +14,7 @@ class ProductCard extends StatelessWidget{
       this.product.tipo,
       style: TextStyle(
           fontFamily: 'Lato',
+          color: Colors.black,
           fontSize: 20.0,
           fontWeight: FontWeight.bold
       ),
@@ -22,6 +23,7 @@ class ProductCard extends StatelessWidget{
       this.product.origen,
       style: TextStyle(
           fontFamily: 'Lato',
+          color: Colors.black,
           fontSize: 20.0,
           fontWeight: FontWeight.bold
       ),
@@ -30,6 +32,7 @@ class ProductCard extends StatelessWidget{
       this.product.sabor,
       style: TextStyle(
           fontFamily: 'Lato',
+          color: Colors.black,
           fontSize: 20.0,
           fontWeight: FontWeight.bold
       ),
@@ -48,7 +51,7 @@ class ProductCard extends StatelessWidget{
               //image: NetworkImage(product.imagen)
           ),
           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          color: Colors.red,
+          color: Colors.white,
           boxShadow: <BoxShadow>[
             BoxShadow(
                 color: Colors.black38,
