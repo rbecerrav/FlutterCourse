@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:my_project/Product/ui/widgets/profile_background.dart';
 import 'package:my_project/infraestructure/driven_adapters/product/api_rest.dart';
@@ -39,7 +41,6 @@ class _HomePageState extends State<HomePage> {
                 return Container(child: Text('X'),); // Display empty container if the list is empty
               else{
                 List<Product> list = future.data as List<Product>;
-                //return ProductCard(new Product(origen: "origen",tipo: "tipo", sabor: "sabor", imagen: "http://i0.wp.com/farallonesdelcitara.bioexploradores.com/wp-content/uploads/2022/10/IMG_3619-2.jpg?resize=790%2C415&ssl=1"));
                 return ListView.separated(
                   padding: const EdgeInsets.all(8),
                     itemCount: list.length,
@@ -50,13 +51,28 @@ class _HomePageState extends State<HomePage> {
                     );
               }
             }),
-        Center(
-          child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>AddProduct()));
-              },
-              child: Text('Press me')),
-        )
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+
+                width: 200,
+                height: 50,
+                margin: EdgeInsets.all(10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green
+                  ),
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>AddProduct()))
+                          .then((value) {
+                        Timer(Duration(seconds: 6), () {
+                          setState(() {});
+                        });
+                      });
+                    },
+                    child: Text('Registrar nuevo producto')),
+              ),
+            )
       ],
     );
   }

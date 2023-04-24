@@ -59,11 +59,13 @@ class _AddProduct extends State<AddProduct> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                print("El producto es!!!!!!!!!!!!!!! ${myController.text}");
+
                 Product product = new Product(tipo: tipo.text,origen: origen.text,sabor:sabor.text,imagen:"" );
+
                 CreateProduct createProduct = new CreateProduct(product);
                 createProduct.create();
                 Navigator.pop(context);
+
               },
               child: Text('GUARDAR!'),
             ),
